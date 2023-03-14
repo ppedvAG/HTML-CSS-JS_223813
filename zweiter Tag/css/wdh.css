@@ -1,0 +1,23 @@
+* {
+    color: grey;
+}
+p {
+    color:black;
+}
+
+h2 {
+    color:pink;
+}
+
+.chapter-heading {
+    color:black;
+    font-size: 36px;
+}
+
+#first-paragraph {
+    display: none;
+}
+
+td, th {
+    color: green;
+}
