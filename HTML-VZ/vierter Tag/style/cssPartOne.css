@@ -1,0 +1,197 @@
+/*
+    Die verschiedenen Selektoren
+
+    .Class
+    p Elememt
+    #Id
+    * Universal
+
+    Spezifitätsliste: 
+
+    1. ID-Selektor 
+    2. Klassen-Selektor
+    3. Element-Selektor
+    4. Universal-Selektor
+*/
+
+h2#first-article     {
+    color: blue
+}
+
+h2 {
+    color: red;
+}
+
+#first-article {
+    color: chartreuse;
+}
+
+/* Spezifität wird mehr gewichtet als die Kaskadierung */
+/* Desto genauer wir unsere Spezifität beschreiben, desto höher wird unsere Spezifität gelistet */
+
+h2#first-article {
+    color: violet; /* Färbt h2 ein, da es die selbe Spezifität hat, aber weiter unten definiert wurde */
+    font-size: 24px; /* Würde so oder so angewandt werden, da sie zu keiner anderen im Konflikt steht */
+}
+
+/*
+    Und-Kombinator
+    Selektiert alle aufgezählten Elemente
+*/
+li, p {
+    color:rgba(13, 12, 12, 0.779);
+}
+
+/* Nachfahre/Descendant-Selektor */
+nav li {
+    list-style-type: none;
+}
+
+/* Direkter-Nachfahr/Child-Selector */
+
+li > a {
+    text-decoration: none;
+    color:rgba(13, 12, 12, 0.779);
+}
+
+/* Direct-Sibling-Selector */
+/* Selektiert nur p Elemente, die direkt nach dem h2 kommen und auf der selben Ebene stehen */
+h2 + p {
+    color: red;
+} 
+
+/* General-Sibling-Selector */
+/* Selektiert alle Elemente, die auf der selben Stufe stehen wie das erstgenannte Element */
+h2 ~ p {
+    color: blue;
+}
+
+/* Attributs-Selektor: */
+
+a[href="#"] {
+    color: tomato;
+}
+
+/* Können genau angeben wie das Attribut heißen soll 
+   Können die werte recht flexibel abfangen
+*/
+
+
+/* 
+    element[attributsName="Wert"] => Attribut mit genauem Wert
+    element[attributsName^="Wert"] => Attributswert muss mit Wert beginnen
+    element[attributsName$="Wert"] => Attributswert muss mit  Wert enden
+    element[attributsName*="Wert"] => Attributswert muss Wert enthalten
+    element:not([attributsname="Wert"]) => Elementsattribut darf den Wert nicht enthalten
+*/
+
+
+/*  
+    ::after - Fügt etwas als letztes Child eines Elementes an
+    ::before
+*/
+li>a::before {
+    background-color: aqua;
+    content: "Ich bin ein before"
+}
+
+li>a::after {
+    content: "Ich bin ein after";
+    background-color: aqua;
+}
+
+/*
+    ::first-letter
+    ::first-line
+*/
+
+h2#first-article::first-letter {
+    font-size: 48px;
+}
+
+h2+p::first-line {
+    background-color: aquamarine;
+}
+
+
+p::selection {
+    background-color: yellow;
+}
+
+#input1::placeholder {
+    color:teal;
+}
+
+article	li::marker {
+    content: "- ";
+}
+
+/* Pseudoklasse 
+    :root - Root-Element innerhalb unseres Dokumentes
+    Ist spezifischer als html
+*/
+
+:root {
+    font-size: large;
+}
+
+*:hover {
+    color: pink;
+}
+
+/* :not() */
+/* Erfasst Elemente die nicht ausgeschlossen wurden innerhalb der Klammer */
+
+/* n-th Child 
+
+    :first-child => Erfässt das erste Kindselement
+    :last-child => Erfässt das letzte Kindselement
+    :only-child => Erfässt das einzige Element
+    :nth-child(n+m) => Erfässt das n-te Kind eines Elementes und beginnt bei m zu zählen
+    :nth-last-child(n+m) => Erfässt das n-te Kind eines Elements und beginnt bei m zu zählen in umgekehrter Reihenfolge
+
+    Statt n+m kann auch even oder odd enthalten sein
+*/
+li:first-child {
+    color: chartreuse;
+}
+
+li:last-child {
+    color: chartreuse;
+}
+
+li:first-child:hover {
+    color: blue;
+}
+
+li>a:only-child {
+    background-color: yellow;
+}
+
+/*
+li:nth-child(even) {
+    background-color: orange;
+}
+
+
+li:nth-child(odd) {
+    background-color: blueviolet;
+}*/
+
+li:nth-child(4) {
+    background-color: orange;
+}
+
+p {
+    color: brown;
+    font-size: larger;
+    background-color: aquamarine;
+}
+
+
+/*
+    :valid
+    :invalid
+    Stylen das Element je nachdem ob es gerade gültig ist oder ungültig
+
+*/
